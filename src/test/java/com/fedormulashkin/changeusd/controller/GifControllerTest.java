@@ -55,7 +55,8 @@ class GifControllerTest {
 
     @Test
     void getExchangeCheckBadRequestStatus() {
-        wireMockServer.getStubMappings().get(0).setResponse(ResponseDefinition.badRequest(Errors.single(400, "Check bad request")));
+        wireMockServer.getStubMappings().get(0).setResponse(ResponseDefinition
+                .badRequest(Errors.single(400, "Check bad request")));
         assertEquals(400, wireMockServer.getStubMappings().get(0).getResponse().getStatus());
     }
 

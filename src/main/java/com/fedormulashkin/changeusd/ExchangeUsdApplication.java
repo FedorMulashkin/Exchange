@@ -6,10 +6,9 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableFeignClients
-public class ChangeUsdApplication {
+public class ExchangeUsdApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ChangeUsdApplication.class, args);
+        SpringApplication.run(ExchangeUsdApplication.class, args);
     }
-
 }

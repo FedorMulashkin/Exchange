@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 
+
 @RestController
 public class GifController {
     private final GiphyFeignClient giphyFeignClient;
@@ -17,12 +18,13 @@ public class GifController {
         this.giphyFeignClient = giphyFeignClient;
     }
 
-    @GetMapping("/gif/")
+    @GetMapping("/gifs/")
     @ResponseBody
     public ResponseEntity<Void> getGif(@RequestParam String q, @RequestParam int offset) {
         Gif gif = giphyFeignClient.getGif(q, offset);
         JSONObject jsonObject = new JSONObject(gif);
         JSONObject jsonObject1 = (JSONObject) jsonObject.getJSONArray("data").get(0);
-        return ResponseEntity.status(HttpStatus.FOUND).location(URI.create((String) jsonObject1.get("embed_url"))).build();
+        return ResponseEntity.status(HttpStatus.FOUND)
+                .location(URI.create((String) jsonObject1.get("embed_url"))).build();
     }
 }
